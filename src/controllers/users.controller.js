@@ -12,7 +12,7 @@ usersCtrl.renderSignUpForm = (req, res) => {
 
 usersCtrl.singup = async (req, res) => {
   let errors = [];
-  const { name, email, password, confirm_password } = req.body;
+  const { name, lastname, age, email, password, confirm_password } = req.body;
   if (password != confirm_password) {
     errors.push({ text: "Passwords do not match." });
   }
@@ -23,6 +23,8 @@ usersCtrl.singup = async (req, res) => {
     res.render("users/signup", {
       errors,
       name,
+      lastname,
+      age,
       email,
       password,
       confirm_password
@@ -35,7 +37,7 @@ usersCtrl.singup = async (req, res) => {
       res.redirect("/users/signup");
     } else {
       // Saving a New User
-      const newUser = new User({ name, email, password });
+      const newUser = new User({ name, lastname, age, email, password });
       newUser.password = await newUser.encryptPassword(password);
       await newUser.save();
       req.flash("success_msg", "You are registered.");

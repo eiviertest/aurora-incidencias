@@ -6,6 +6,22 @@ const NoteSchema = new Schema(
       type: String,
       required: true
     },
+    nomP: {
+      type: String,
+      required: true
+    },
+    nomGp: {
+      type: String,
+      required: true
+    },
+    asunto: {
+      type: String,
+      required: true
+    },
+    asunto: {
+      type: String,
+      required: true
+    },
     description: {
       type: String,
       required: true
